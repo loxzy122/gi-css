@@ -25,6 +25,7 @@ Download the CSS file and include it in your project:
 ### Method 2: CDN (Recommended for quick prototyping)
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/your-username/google-inspired-css@main/google-inspired-css.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/loxzy122/gi-css@v1.0.0/gi.min.css">
 ```
 
 ### Method 3: NPM (Coming Soon)
