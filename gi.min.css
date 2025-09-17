@@ -1,0 +1,538 @@
+/*
+         * Google-Inspired Utility CSS Framework
+         * Version: 1.2
+         * Author: Gemini
+         * Description: A utility-first CSS framework inspired by Google's Material Design principles.
+         * This version includes styles for buttons, forms, tables, and additional form elements.
+         */
+
+        /* --------------------------------------------------------------------------------
+         * 1. Root Variables
+         * These variables define the core design tokens for the framework.
+         * -------------------------------------------------------------------------------- */
+        :root {
+          /* Colors */
+          --g-blue-50: #e3f2fd;
+          --g-blue-100: #bbdefb;
+          --g-blue-200: #90caf9;
+          --g-blue-300: #64b5f6;
+          --g-blue-400: #42a5f5;
+          --g-blue-500: #2196f3;
+          --g-blue-600: #1e88e5;
+          --g-blue-700: #1976d2;
+          --g-blue-800: #1565c0;
+          --g-blue-900: #0d47a1;
+
+          --g-red-500: #f44336;
+          --g-yellow-500: #ffeb3b;
+          --g-green-500: #4caf50;
+
+          --g-gray-50: #fafafa;
+          --g-gray-100: #f5f5f5;
+          --g-gray-200: #eeeeee;
+          --g-gray-300: #e0e0e0;
+          --g-gray-400: #bdbdbd;
+          --g-gray-500: #9e9e9e;
+          --g-gray-600: #757575;
+          --g-gray-700: #616161;
+          --g-gray-800: #424242;
+          --g-gray-900: #212121;
+
+          --g-text-primary: #212121;
+          --g-text-secondary: #757575;
+          --g-text-light: #ffffff;
+
+          /* Spacing Scale (based on 4px grid) */
+          --g-spacing-0: 0;
+          --g-spacing-1: 0.25rem;  /* 4px */
+          --g-spacing-2: 0.5rem;   /* 8px */
+          --g-spacing-3: 0.75rem;  /* 12px */
+          --g-spacing-4: 1rem;     /* 16px */
+          --g-spacing-5: 1.25rem;  /* 20px */
+          --g-spacing-6: 1.5rem;   /* 24px */
+          --g-spacing-8: 2rem;     /* 32px */
+          --g-spacing-10: 2.5rem;  /* 40px */
+          --g-spacing-12: 3rem;    /* 48px */
+          --g-spacing-16: 4rem;    /* 64px */
+
+          /* Font Sizes */
+          --g-text-xs: 0.75rem;
+          --g-text-sm: 0.875rem;
+          --g-text-base: 1rem;
+          --g-text-lg: 1.125rem;
+          --g-text-xl: 1.25rem;
+          --g-text-2xl: 1.5rem;
+          --g-text-3xl: 1.875rem;
+          --g-text-4xl: 2.25rem;
+          --g-text-5xl: 3rem;
+          --g-text-6xl: 4rem;
+
+          /* Border Radius */
+          --g-rounded-sm: 0.125rem;
+          --g-rounded: 0.25rem;
+          --g-rounded-md: 0.375rem;
+          --g-rounded-lg: 0.5rem;
+          --g-rounded-full: 9999px;
+
+          /* Shadows (Material Design style) */
+          --g-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+          --g-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+          --g-shadow-md: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+          --g-shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        }
+
+        /* --------------------------------------------------------------------------------
+         * 2. Base Styles
+         * General styles for common HTML elements.
+         * -------------------------------------------------------------------------------- */
+        *, *::before, *::after {
+          box-sizing: border-box;
+        }
+
+        html, body {
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+          line-height: 1.5;
+          font-size: 1rem;
+          color: var(--g-text-primary);
+          background-color: var(--g-gray-50);
+          margin: 0;
+          padding: 0;
+        }
+
+        /* --------------------------------------------------------------------------------
+         * 3. Layout Utilities
+         * Classes for controlling layout and display.
+         * -------------------------------------------------------------------------------- */
+        .container {
+          max-width: 1200px;
+          margin-left: auto;
+          margin-right: auto;
+          padding: var(--g-spacing-4);
+        }
+
+        /* Display */
+        .d-block { display: block; }
+        .d-inline-block { display: inline-block; }
+        .d-flex { display: flex; }
+        .d-inline-flex { display: inline-flex; }
+        .d-grid { display: grid; }
+        .d-none { display: none; }
+
+        /* Flexbox */
+        .flex-row { flex-direction: row; }
+        .flex-col { flex-direction: column; }
+        .flex-wrap { flex-wrap: wrap; }
+        .flex-nowrap { flex-wrap: nowrap; }
+        .flex-1 { flex: 1; }
+        .flex-auto { flex: 1 1 auto; }
+        .flex-grow-0 { flex-grow: 0; }
+        .flex-grow-1 { flex-grow: 1; }
+        .flex-shrink-0 { flex-shrink: 0; }
+        .flex-shrink-1 { flex-shrink: 1; }
+
+        /* Alignment */
+        .justify-start { justify-content: flex-start; }
+        .justify-end { justify-content: flex-end; }
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        .justify-around { justify-content: space-around; }
+
+        .items-start { align-items: flex-start; }
+        .items-end { align-items: flex-end; }
+        .items-center { align-items: center; }
+        .items-baseline { align-items: baseline; }
+        .items-stretch { align-items: stretch; }
+
+        /* Grid */
+        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+        .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .grid-cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+        .grid-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+
+        .gap-1 { gap: var(--g-spacing-1); }
+        .gap-2 { gap: var(--g-spacing-2); }
+        .gap-3 { gap: var(--g-spacing-3); }
+        .gap-4 { gap: var(--g-spacing-4); }
+        .gap-6 { gap: var(--g-spacing-6); }
+        .gap-8 { gap: var(--g-spacing-8); }
+
+        /* Positioning */
+        .relative { position: relative; }
+        .absolute { position: absolute; }
+        .fixed { position: fixed; }
+        .top-0 { top: 0; }
+        .right-0 { right: 0; }
+        .bottom-0 { bottom: 0; }
+        .left-0 { left: 0; }
+
+        /* --------------------------------------------------------------------------------
+         * 4. Spacing Utilities
+         * Classes for margin and padding.
+         * -------------------------------------------------------------------------------- */
+        .p-0 { padding: var(--g-spacing-0); }
+        .p-1 { padding: var(--g-spacing-1); }
+        .p-2 { padding: var(--g-spacing-2); }
+        .p-3 { padding: var(--g-spacing-3); }
+        .p-4 { padding: var(--g-spacing-4); }
+        .p-5 { padding: var(--g-spacing-5); }
+        .p-6 { padding: var(--g-spacing-6); }
+        .p-8 { padding: var(--g-spacing-8); }
+        .px-1 { padding-left: var(--g-spacing-1); padding-right: var(--g-spacing-1); }
+        .px-2 { padding-left: var(--g-spacing-2); padding-right: var(--g-spacing-2); }
+        .px-4 { padding-left: var(--g-spacing-4); padding-right: var(--g-spacing-4); }
+        .py-1 { padding-top: var(--g-spacing-1); padding-bottom: var(--g-spacing-1); }
+        .py-2 { padding-top: var(--g-spacing-2); padding-bottom: var(--g-spacing-2); }
+        .py-4 { padding-top: var(--g-spacing-4); padding-bottom: var(--g-spacing-4); }
+        .pt-1 { padding-top: var(--g-spacing-1); }
+        .pt-2 { padding-top: var(--g-spacing-2); }
+        .pt-4 { padding-top: var(--g-spacing-4); }
+        .pb-1 { padding-bottom: var(--g-spacing-1); }
+        .pb-2 { padding-bottom: var(--g-spacing-2); }
+        .pb-4 { padding-bottom: var(--g-spacing-4); }
+        .pl-1 { padding-left: var(--g-spacing-1); }
+        .pr-1 { padding-right: var(--g-spacing-1); }
+
+        .m-0 { margin: var(--g-spacing-0); }
+        .m-1 { margin: var(--g-spacing-1); }
+        .m-2 { margin: var(--g-spacing-2); }
+        .m-3 { margin: var(--g-spacing-3); }
+        .m-4 { margin: var(--g-spacing-4); }
+        .m-auto { margin: auto; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .mx-1 { margin-left: var(--g-spacing-1); margin-right: var(--g-spacing-1); }
+        .my-1 { margin-top: var(--g-spacing-1); margin-bottom: var(--g-spacing-1); }
+        .mt-2 { margin-top: var(--g-spacing-2); }
+        .mt-4 { margin-top: var(--g-spacing-4); }
+        .mb-4 { margin-bottom: var(--g-spacing-4); }
+
+        /* --------------------------------------------------------------------------------
+         * 5. Sizing Utilities
+         * Classes for controlling element width and height.
+         * -------------------------------------------------------------------------------- */
+        .w-full { width: 100%; }
+        .w-1\/2 { width: 50%; }
+        .w-1\/3 { width: 33.333333%; }
+        .w-2\/3 { width: 66.666667%; }
+        .w-1\/4 { width: 25%; }
+        .w-3\/4 { width: 75%; }
+        .h-full { height: 100%; }
+        .h-screen { height: 100vh; }
+        .max-w-full { max-width: 100%; }
+
+        /* --------------------------------------------------------------------------------
+         * 6. Typography Utilities
+         * Classes for text styling.
+         * -------------------------------------------------------------------------------- */
+        .text-xs { font-size: var(--g-text-xs); }
+        .text-sm { font-size: var(--g-text-sm); }
+        .text-base { font-size: var(--g-text-base); }
+        .text-lg { font-size: var(--g-text-lg); }
+        .text-xl { font-size: var(--g-text-xl); }
+        .text-2xl { font-size: var(--g-text-2xl); }
+        .text-3xl { font-size: var(--g-text-3xl); }
+        .text-4xl { font-size: var(--g-text-4xl); }
+
+        .font-normal { font-weight: 400; }
+        .font-medium { font-weight: 500; }
+        .font-semibold { font-weight: 600; }
+        .font-bold { font-weight: 700; }
+
+        .text-left { text-align: left; }
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+
+        .tracking-wide { letter-spacing: 0.05em; }
+
+        .text-blue-500 { color: var(--g-blue-500); }
+        .text-red-500 { color: var(--g-red-500); }
+        .text-yellow-500 { color: var(--g-yellow-500); }
+        .text-green-500 { color: var(--g-green-500); }
+        .text-gray-900 { color: var(--g-gray-900); }
+        .text-white { color: var(--g-text-light); }
+        .text-primary { color: var(--g-text-primary); }
+        .text-secondary { color: var(--g-text-secondary); }
+
+        /* --------------------------------------------------------------------------------
+         * 7. Background & Border Utilities
+         * Classes for background colors and borders.
+         * -------------------------------------------------------------------------------- */
+        .bg-white { background-color: #ffffff; }
+        .bg-blue-500 { background-color: var(--g-blue-500); }
+        .bg-blue-100 { background-color: var(--g-blue-100); }
+        .bg-red-500 { background-color: var(--g-red-500); }
+        .bg-gray-100 { background-color: var(--g-gray-100); }
+        .bg-gray-200 { background-color: var(--g-gray-200); }
+        .bg-gray-500 { background-color: var(--g-gray-500); }
+        .bg-transparent { background-color: transparent; }
+
+        .border { border: 1px solid var(--g-gray-300); }
+        .border-2 { border: 2px solid var(--g-gray-300); }
+        .border-none { border: none; }
+        .border-blue-500 { border-color: var(--g-blue-500); }
+        .border-red-500 { border-color: var(--g-red-500); }
+        .border-gray-300 { border-color: var(--g-gray-300); }
+        .rounded { border-radius: var(--g-rounded); }
+        .rounded-sm { border-radius: var(--g-rounded-sm); }
+        .rounded-md { border-radius: var(--g-rounded-md); }
+        .rounded-lg { border-radius: var(--g-rounded-lg); }
+        .rounded-full { border-radius: var(--g-rounded-full); }
+
+        /* --------------------------------------------------------------------------------
+         * 8. Effects Utilities
+         * Classes for shadows and transitions.
+         * -------------------------------------------------------------------------------- */
+        .shadow { box-shadow: var(--g-shadow); }
+        .shadow-sm { box-shadow: var(--g-shadow-sm); }
+        .shadow-md { box-shadow: var(--g-shadow-md); }
+        .shadow-lg { box-shadow: var(--g-shadow-lg); }
+
+        .transition { transition-property: all; transition-duration: 0.2s; transition-timing-function: ease-in-out; }
+        .transition-colors { transition-property: background-color, border-color, color, fill, stroke; }
+        .transition-shadow { transition-property: box-shadow; }
+        .transition-transform { transition-property: transform; }
+
+        .hover\:shadow-md:hover { box-shadow: var(--g-shadow-md); }
+
+        /* --------------------------------------------------------------------------------
+         * 9. Component Styles
+         * Classes for common UI components like buttons, forms, and tables.
+         * -------------------------------------------------------------------------------- */
+        /* Buttons */
+        .btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: var(--g-spacing-2) var(--g-spacing-4);
+          font-size: var(--g-text-base);
+          font-weight: 500;
+          line-height: 1.25;
+          text-align: center;
+          text-decoration: none;
+          border-radius: var(--g-rounded-md);
+          border: 1px solid transparent;
+          cursor: pointer;
+          user-select: none;
+          transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .btn-primary {
+          color: var(--g-text-light);
+          background-color: var(--g-blue-500);
+          box-shadow: var(--g-shadow-sm);
+        }
+
+        .btn-primary:hover {
+          background-color: var(--g-blue-600);
+          box-shadow: var(--g-shadow);
+        }
+
+        .btn-secondary {
+          color: var(--g-text-primary);
+          background-color: var(--g-gray-200);
+        }
+
+        .btn-secondary:hover {
+          background-color: var(--g-gray-300);
+        }
+
+        .btn-outline {
+          color: var(--g-blue-500);
+          background-color: transparent;
+          border-color: var(--g-blue-500);
+        }
+
+        .btn-outline:hover {
+          background-color: var(--g-blue-50);
+        }
+
+        .btn-sm {
+          padding: var(--g-spacing-1) var(--g-spacing-2);
+          font-size: var(--g-text-sm);
+        }
+
+        .btn-lg {
+          padding: var(--g-spacing-3) var(--g-spacing-6);
+          font-size: var(--g-text-lg);
+        }
+
+        /* Forms */
+        .form-control {
+          display: block;
+          width: 100%;
+          padding: var(--g-spacing-2) var(--g-spacing-3);
+          font-size: var(--g-text-base);
+          line-height: 1.5;
+          color: var(--g-text-primary);
+          background-color: #fff;
+          background-clip: padding-box;
+          border: 1px solid var(--g-gray-300);
+          border-radius: var(--g-rounded);
+          transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        .form-control:focus {
+          color: var(--g-text-primary);
+          background-color: #fff;
+          border-color: var(--g-blue-500);
+          outline: 0;
+          box-shadow: 0 0 0 0.25rem rgba(33, 150, 243, 0.25);
+        }
+
+        /* Styles for select dropdown */
+        .form-select {
+          appearance: none;
+          background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>');
+          background-repeat: no-repeat;
+          background-position: right var(--g-spacing-3) center;
+          background-size: 1.25em 1.25em;
+          padding-right: var(--g-spacing-8);
+        }
+
+        /* Styles for file input button */
+        .form-file-input {
+          display: none;
+        }
+
+        .form-file-label {
+          display: block;
+          width: 100%;
+          padding: var(--g-spacing-2) var(--g-spacing-3);
+          font-size: var(--g-text-base);
+          line-height: 1.5;
+          color: var(--g-text-primary);
+          background-color: #fff;
+          background-clip: padding-box;
+          border: 1px solid var(--g-gray-300);
+          border-radius: var(--g-rounded);
+          cursor: pointer;
+          user-select: none;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .form-file-label:hover {
+            border-color: var(--g-blue-500);
+        }
+
+        /* Styles for checkboxes and radios */
+        .form-check {
+          display: flex;
+          align-items: center;
+          gap: var(--g-spacing-2);
+          cursor: pointer;
+          user-select: none;
+        }
+
+        .form-check-input {
+          appearance: none;
+          width: 1.25rem;
+          height: 1.25rem;
+          margin: 0;
+          padding: 0;
+          border: 2px solid var(--g-gray-400);
+          border-radius: var(--g-rounded-sm);
+          position: relative;
+          display: grid;
+          place-content: center;
+          transition: border-color 0.15s ease-in-out;
+        }
+
+        .form-check-input:hover {
+            border-color: var(--g-blue-500);
+        }
+
+        .form-check-input::before {
+          content: '';
+          width: 0.75rem;
+          height: 0.75rem;
+          transform: scale(0);
+          transition: transform 0.15s ease-in-out;
+          box-shadow: inset 1em 1em var(--g-blue-500);
+          border-radius: var(--g-rounded-sm);
+        }
+
+        .form-check-input:checked::before {
+          transform: scale(1);
+        }
+
+        /* Radio button specific styles */
+        .form-check-input[type="radio"] {
+          border-radius: var(--g-rounded-full);
+        }
+
+        .form-check-input[type="radio"]::before {
+          border-radius: var(--g-rounded-full);
+        }
+
+        .form-group {
+          margin-bottom: var(--g-spacing-4);
+        }
+
+        .form-label {
+          display: inline-block;
+          margin-bottom: var(--g-spacing-1);
+          font-weight: 500;
+          color: var(--g-text-secondary);
+        }
+
+        /* Tables */
+        .table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+
+        .table th,
+        .table td {
+          padding: var(--g-spacing-3);
+          vertical-align: top;
+          border-top: 1px solid var(--g-gray-200);
+          text-align: left;
+        }
+
+        .table th {
+          font-weight: 600;
+          color: var(--g-text-secondary);
+          background-color: var(--g-gray-100);
+        }
+
+        .table tbody tr:nth-child(even) {
+          background-color: var(--g-gray-50);
+        }
+
+        /* --------------------------------------------------------------------------------
+         * 10. Responsive Design (via Media Queries)
+         * Use prefixes like 'sm:' or 'md:' in your class names to apply styles at different breakpoints.
+         * Example: `<div class="p-2 sm:p-4 md:flex">...</div>`
+         * -------------------------------------------------------------------------------- */
+        /* Small screens (min-width: 640px) */
+        @media (min-width: 640px) {
+          .sm\:d-flex { display: flex; }
+          .sm\:d-none { display: none; }
+          .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+          .sm\:p-4 { padding: var(--g-spacing-4); }
+          .sm\:px-4 { padding-left: var(--g-spacing-4); padding-right: var(--g-spacing-4); }
+          .sm\:py-4 { padding-top: var(--g-spacing-4); padding-bottom: var(--g-spacing-4); }
+          .sm\:text-xl { font-size: var(--g-text-xl); }
+        }
+
+        /* Medium screens (min-width: 768px) */
+        @media (min-width: 768px) {
+          .md\:d-flex { display: flex; }
+          .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+          .md\:gap-6 { gap: var(--g-spacing-6); }
+          .md\:text-2xl { font-size: var(--g-text-2xl); }
+        }
+
+        /* Large screens (min-width: 1024px) */
+        @media (min-width: 1024px) {
+          .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+          .lg\:justify-between { justify-content: space-between; }
+        }
+
+        /* Extra Large screens (min-width: 1280px) */
+        @media (min-width: 1280px) {
+          .xl\:grid-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+        }
